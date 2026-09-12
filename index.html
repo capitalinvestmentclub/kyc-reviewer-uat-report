@@ -1,65 +1,162 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KYC Reviewer deployed UAT findings and coverage">
-  <title>KYC Reviewer · UAT report</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="KYC Reviewer UAT report home"><span class="mark">K</span><span>KYC Reviewer UAT</span></a>
-    <nav aria-label="Report sections"><a href="#findings">Findings</a><a href="#coverage">Coverage</a><a href="#method">Method</a></nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interim KYC Reviewer Chrome UAT findings and coverage."
+    />
+    <title>KYC Reviewer · Chrome UAT findings</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%2312211d'/%3E%3Ctext x='32' y='38' text-anchor='middle' font-size='18' font-family='monospace' fill='white'%3ECIC%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=4">
+  </head>
+  <body>
+    <a class="skip-link" href="#findings-list">Skip to findings</a>
 
-  <main id="top">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Deployed cloud validation · 12 September 2026</p>
-        <h1>Reviewer evidence is not yet safe to approve.</h1>
-        <p class="lede">The active KYC Reviewer campaign has already reproduced a critical document-readability failure, duplicate queue results, and mobile action loss on the deployed CIC application.</p>
-        <div class="actions"><a class="button primary" href="#findings">Review blocking findings</a><a class="button" href="https://github.com/capitalinvestmentclub/webapp/issues/1959">Open source issue</a></div>
+    <header class="topbar">
+      <a class="brand" href="https://github.com/capitalinvestmentclub/kyc-reviewer-uat-report">
+        <span class="brand-mark" aria-hidden="true">CIC</span>
+        <span>
+          <strong>Review record</strong>
+          <small>capitalinvestmentclub / webapp</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <button class="quiet-button" id="export-button" type="button">Export CSV</button>
+        <button class="primary-button" id="share-button" type="button">Copy view link</button>
       </div>
-      <aside class="release-card" aria-label="Release under test">
-        <span class="live"><i></i> UAT in progress</span>
-        <dl><div><dt>Webapp build</dt><dd><code>08af53f6</code></dd></div><div><dt>Target</dt><dd>Deployed CIC cloud</dd></div><div><dt>Primary role</dt><dd>KYC Reviewer</dd></div><div><dt>Final score</dt><dd>Not issued</dd></div></dl>
-      </aside>
-    </section>
+    </header>
 
-    <section class="stats" aria-label="Campaign summary">
-      <article><strong>30</strong><span>defined scenarios</span></article>
-      <article><strong>9</strong><span>started</span></article>
-      <article class="danger"><strong>5</strong><span>open findings</span></article>
-      <article><strong>6</strong><span>Chrome sizes inspected</span></article>
-    </section>
+    <main>
+      <section class="overview" aria-labelledby="page-title">
+        <div class="overview-copy">
+          <p class="eyebrow">KYC Reviewer Chrome · Living review artifact</p>
+          <h1 id="page-title">KYC Reviewer UAT findings</h1>
+          <p class="lede">
+            Interim findings from the KYC Reviewer Chrome campaign, with explicit scenario
+            progress, current blockers, and a durable record for fixes and retests.
+          </p>
+          <div class="metadata" id="metadata"></div>
+        </div>
+        <div class="release-signal" aria-label="Current release assessment">
+          <span class="signal-pulse" aria-hidden="true"></span>
+          <div>
+            <small>Release signal</small>
+            <strong>Blocked · UAT in progress</strong>
+            <span id="release-reason">1 critical and 3 high findings remain open; 21 scenarios have not started.</span>
+          </div>
+        </div>
+      </section>
 
-    <section class="notice" role="status"><strong>Interim report.</strong> Results below are published immediately for visibility. Unexecuted and infrastructure-blocked cells remain explicit; no final UAT score is claimed.</section>
+      <section class="metrics" aria-label="Finding summary">
+        <button class="metric" type="button" data-metric-filter="all">
+          <strong id="metric-total">—</strong><span>Tracked</span>
+        </button>
+        <button class="metric metric-danger" type="button" data-metric-filter="urgent">
+          <strong id="metric-urgent">—</strong><span>Critical + high</span>
+        </button>
+        <button class="metric" type="button" data-metric-filter="open">
+          <strong id="metric-open">—</strong><span>Open</span>
+        </button>
+        <button class="metric metric-success" type="button" data-metric-filter="fixed">
+          <strong id="metric-fixed">—</strong><span>Fixed</span>
+        </button>
+        <button class="metric" type="button" data-metric-filter="closed">
+          <strong id="metric-closed">—</strong><span>Closed / clarified</span>
+        </button>
+      </section>
 
-    <section id="findings">
-      <div class="section-head"><div><p class="eyebrow">Observed behavior</p><h2>Blocking findings</h2></div><label>Filter severity <select id="severity"><option value="all">All severities</option><option>Critical</option><option>High</option><option>Medium</option></select></label></div>
-      <div id="finding-list" class="finding-list"></div>
-    </section>
+<div class="campaign-note"><strong>Interim KYC Reviewer run · 9/30 scenarios started · 5 open findings.</strong> Six Chrome viewport sizes were inspected for the dashboard; the full scenario/browser/device matrix remains in progress. <a href="#coverage">View coverage & gaps →</a></div>
+      <section class="workspace" aria-label="Review workspace">
+        <aside class="filters" aria-label="Finding filters">
+          <div class="search-wrap">
+            <label for="search">Search findings</label>
+            <input id="search" type="search" placeholder="ID, title, area…" autocomplete="off" />
+            <kbd>/</kbd>
+          </div>
 
-    <section id="coverage">
-      <div class="section-head"><div><p class="eyebrow">Execution ledger</p><h2>Scenario coverage</h2></div><label>Filter status <select id="status"><option value="all">All statuses</option><option value="fail">Failure found</option><option value="progress">In progress</option><option value="blocked">Blocked</option><option value="not-run">Not run</option></select></label></div>
-      <div class="legend"><span><i class="dot fail"></i>Failure found</span><span><i class="dot progress"></i>In progress</span><span><i class="dot blocked"></i>Blocked</span><span><i class="dot not-run"></i>Not run</span></div>
-      <div id="coverage-grid" class="coverage-grid"></div>
-    </section>
+          <fieldset>
+            <legend>Type</legend>
+            <div class="filter-options" id="type-filters"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Status</legend>
+            <div class="filter-options" id="status-filters"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Severity</legend>
+            <div class="filter-options" id="severity-filters"></div>
+          </fieldset>
 
-    <section id="method" class="method">
-      <p class="eyebrow">Provenance and limitations</p><h2>How this report was produced</h2>
-      <div class="method-grid">
-        <article><h3>Real deployed UI</h3><p>Chrome interacted with the rendered CIC application and real API-backed reviewer data. No mocked business outcomes are counted.</p></article>
-        <article><h3>Responsive inspection</h3><p>The reviewer dashboard was inspected at 360×800, 390×844, 768×1024, 1024×768, 1280×800 and 1440×900.</p></article>
-        <article><h3>Open coverage gaps</h3><p>Safari, Edge, real iPhone and Android endpoints, controlled referee mailboxes, and destructive fixture clones were unavailable in this execution environment.</p></article>
+          <div class="filter-note">
+            <span class="mini-orbit" aria-hidden="true"></span>
+            <p><strong>Update-ready</strong> Original findings are preserved separately from future fixes and browser retests.</p>
+            <a href="https://github.com/capitalinvestmentclub/kyc-reviewer-uat-report">Open report source →</a>
+          </div>
+        </aside>
+
+        <div class="results">
+          <div class="results-toolbar">
+            <div>
+              <p><strong id="result-count">—</strong> findings shown</p>
+              <span id="active-filter-copy">Full KYC Reviewer record</span>
+            </div>
+            <label class="sort-control" for="sort">
+              Sort
+              <select id="sort">
+                <option value="severity">Severity</option>
+                <option value="id">Finding ID</option>
+                <option value="scenario">Scenario</option>
+                <option value="status">Status</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="list-heading" aria-hidden="true">
+            <span>Finding</span><span>Area</span><span>Status</span>
+          </div>
+          <div id="findings-list" class="findings-list" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <span aria-hidden="true">∅</span>
+            <h2>No findings match this view</h2>
+            <p>Clear a filter or search for a different ID, title, or scenario.</p>
+            <button class="quiet-button" id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </div>
+      </section>
+<div class="report-appendix"><section><div class="section-title"><h2>What has been demonstrated</h2><span>Successful subchecks, not whole-scenario passes</span></div><div class="success-grid"><article><h3>Authentication & access controls</h3><p>Valid reviewer sign-in after stale-session recovery, generic wrong-password handling, and sensitive-value reveal reasons including length and whitespace validation plus remasking.</p></article><article><h3>Queue & submitted facts</h3><p>All five queue states, queue counts and filters were inspected. Submitted identity facts remained masked until an accepted reveal reason was supplied.</p></article><article><h3>Evidence & responsive risk</h3><p>Required document previews failed in the reviewer workbench, and mobile queue actions were observed beyond the visible edge at narrow Chrome sizes.</p></article></div></section>
+<section id="coverage"><div class="section-title"><h2>All 30 KYC Reviewer scenarios</h2><span>Interim execution record · no final UAT score</span></div><p>Nine scenarios have started. Results below distinguish observed failures, work still in progress, blocked coverage, and scenarios not yet run. Six-size inspection does not imply full workflow completion.</p><div class="table-wrap" tabindex="0" aria-label="Scrollable scenario coverage"><table><thead><tr><th>Scenario</th><th>Executed / observed</th><th>Still needed</th><th>Six-size record</th></tr></thead><tbody id="scenarios"></tbody></table></div></section>
+<section><h2>Scoped blockers and remaining work</h2><div id="gaps" class="success-grid"></div></section>
+<section id="visual-evidence"><h2>Selected visual evidence</h2><p>Choose a finding, or open one from the register. Sanitized public images have not yet been exported; the private run records remain the evidence source.</p><label for="evidence-finding">Finding</label><select id="evidence-finding" aria-controls="selected-evidence"></select><div id="selected-evidence" aria-live="polite"></div></section>
+<section id="method"><h2>Method, provenance & history</h2><div class="success-grid"><article><h3>Execution contract</h3><p>Real Google Chrome UI against the deployed environment. Workflow actions were performed through rendered controls and results were recorded without publishing credentials or sensitive identity values.</p></article><article><h3>Viewport scope</h3><p>The dashboard was inspected at 360×800, 390×844, 768×1024, 1024×768, 1280×800 and 1440×900. Full scenario coverage at every size is still in progress.</p></article><article><h3>Build provenance</h3><p>Webapp deployed commit: <code>08af53f6</code><br>Source scenario specification: webapp issue #1959<br>Report status: interim and blocked by open critical/high findings.</p></article></div><h3>Source records</h3><p>Private execution records remain under <code>tests/e2e/kyc-reviewer/</code>. This public artifact contains sanitized conclusions only.</p><h3>Publication history</h3><p>Revision 1 · 11 Sep 2026: initial interim KYC Reviewer publication.</p><p>Revision 2 · 11 Sep 2026: aligned to the established CIC UAT report template with explicit coverage and gaps.</p><h3>Remaining work</h3><p>Complete the remaining 21 scenarios, finish in-progress and blocked paths, expand six-size coverage beyond the dashboard, and retest all fixes before assigning a final score.</p></section>
+</div>
+    </main>
+
+    <dialog id="finding-dialog" class="finding-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <p id="dialog-kicker" class="eyebrow"></p>
+            <h2 id="dialog-title"></h2>
+          </div>
+          <button class="icon-button" id="dialog-close" type="button" aria-label="Close finding">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <div id="dialog-content" class="dialog-content"></div>
       </div>
-      <p class="source">Private, append-only run records are maintained under <code>tests/e2e/kyc-reviewer/*/runs/2026-09-12T04-35-54Z/</code>. Credentials and sensitive values are excluded from this public report.</p>
-    </section>
-  </main>
+    </dialog>
 
-  <footer><span>KYC Reviewer UAT · revision 1</span><span>Generated 12 September 2026</span></footer>
-  <script src="app.js"></script>
-</body>
-</html>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<footer class="report-footer">Published by Capital Investment Club · KYC Reviewer interim UAT record · <a href="https://capitalinvestmentclub.github.io/pitcher-uat-report/">Established report template</a><br>Revision 2: template corrected; findings remain interim pending full execution and retest.</footer><script src="data.js?v=2"></script><script src="retest.js?v=2"></script><script src="app.js?v=2"></script></body></html>
