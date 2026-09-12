@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KYC Reviewer deployed UAT findings and coverage">
+  <title>KYC Reviewer · UAT report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="KYC Reviewer UAT report home"><span class="mark">K</span><span>KYC Reviewer UAT</span></a>
+    <nav aria-label="Report sections"><a href="#findings">Findings</a><a href="#coverage">Coverage</a><a href="#method">Method</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Deployed cloud validation · 12 September 2026</p>
+        <h1>Reviewer evidence is not yet safe to approve.</h1>
+        <p class="lede">The active KYC Reviewer campaign has already reproduced a critical document-readability failure, duplicate queue results, and mobile action loss on the deployed CIC application.</p>
+        <div class="actions"><a class="button primary" href="#findings">Review blocking findings</a><a class="button" href="https://github.com/capitalinvestmentclub/webapp/issues/1959">Open source issue</a></div>
+      </div>
+      <aside class="release-card" aria-label="Release under test">
+        <span class="live"><i></i> UAT in progress</span>
+        <dl><div><dt>Webapp build</dt><dd><code>08af53f6</code></dd></div><div><dt>Target</dt><dd>Deployed CIC cloud</dd></div><div><dt>Primary role</dt><dd>KYC Reviewer</dd></div><div><dt>Final score</dt><dd>Not issued</dd></div></dl>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="Campaign summary">
+      <article><strong>30</strong><span>defined scenarios</span></article>
+      <article><strong>9</strong><span>started</span></article>
+      <article class="danger"><strong>5</strong><span>open findings</span></article>
+      <article><strong>6</strong><span>Chrome sizes inspected</span></article>
+    </section>
+
+    <section class="notice" role="status"><strong>Interim report.</strong> Results below are published immediately for visibility. Unexecuted and infrastructure-blocked cells remain explicit; no final UAT score is claimed.</section>
+
+    <section id="findings">
+      <div class="section-head"><div><p class="eyebrow">Observed behavior</p><h2>Blocking findings</h2></div><label>Filter severity <select id="severity"><option value="all">All severities</option><option>Critical</option><option>High</option><option>Medium</option></select></label></div>
+      <div id="finding-list" class="finding-list"></div>
+    </section>
+
+    <section id="coverage">
+      <div class="section-head"><div><p class="eyebrow">Execution ledger</p><h2>Scenario coverage</h2></div><label>Filter status <select id="status"><option value="all">All statuses</option><option value="fail">Failure found</option><option value="progress">In progress</option><option value="blocked">Blocked</option><option value="not-run">Not run</option></select></label></div>
+      <div class="legend"><span><i class="dot fail"></i>Failure found</span><span><i class="dot progress"></i>In progress</span><span><i class="dot blocked"></i>Blocked</span><span><i class="dot not-run"></i>Not run</span></div>
+      <div id="coverage-grid" class="coverage-grid"></div>
+    </section>
+
+    <section id="method" class="method">
+      <p class="eyebrow">Provenance and limitations</p><h2>How this report was produced</h2>
+      <div class="method-grid">
+        <article><h3>Real deployed UI</h3><p>Chrome interacted with the rendered CIC application and real API-backed reviewer data. No mocked business outcomes are counted.</p></article>
+        <article><h3>Responsive inspection</h3><p>The reviewer dashboard was inspected at 360×800, 390×844, 768×1024, 1024×768, 1280×800 and 1440×900.</p></article>
+        <article><h3>Open coverage gaps</h3><p>Safari, Edge, real iPhone and Android endpoints, controlled referee mailboxes, and destructive fixture clones were unavailable in this execution environment.</p></article>
+      </div>
+      <p class="source">Private, append-only run records are maintained under <code>tests/e2e/kyc-reviewer/*/runs/2026-09-12T04-35-54Z/</code>. Credentials and sensitive values are excluded from this public report.</p>
+    </section>
+  </main>
+
+  <footer><span>KYC Reviewer UAT · revision 1</span><span>Generated 12 September 2026</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
+
