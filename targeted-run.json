@@ -1,8 +1,8 @@
 {
-  "runId": "2026-09-14-targeted-chrome",
-  "state": "COMPLETED — targeted partial-scope retest; original campaign not closed",
-  "updatedAt": "2026-09-14T04:54:48Z",
-  "scope": "User-approved 90-minute risk-based retest of affected critical/high findings. Functional journey execution is separate from responsive inspection.",
+  "runId": "2026-09-14-retest45",
+  "state": "RETEST PARTIAL — all 45 dispositioned; incomplete workflows explicitly blocked or partial",
+  "updatedAt": "2026-09-14T07:08:29.535Z",
+  "scope": "Chrome-only targeted retest of the 45 originally unclosed critical/high defects. Dispositioned does not mean fully executed: blocked, partial and unexecuted viewport checks remain explicit. Historical campaign findings remain unchanged. Targeted PASS does not assert broader unexecuted lifecycle coverage.",
   "frontend": "https://planar-truck-361704.uc.r.appspot.com",
   "api": "https://cicdevapi.uc.r.appspot.com",
   "browser": "Google Chrome",
@@ -21,62 +21,6 @@
     }
   },
   "findings": [
-    {
-      "id": "KYCR-F005",
-      "title": "Required applicant documents remain unreadable",
-      "scenario": "KYCR-004 / KYCR-006 / KYCR-009",
-      "status": "BLOCKED",
-      "summary": "The audited passport preview and HTTPS Open document fallback were exercised, but both viewers appeared black in screenshot capture. Readability could not be verified; a product failure has not been established. The legacy fallback remained black after a ten-minute settling period; a different controlled private fixture rendered legibly in the approval role, indicating fixture-specific coverage remains unresolved.",
-      "steps": [
-        "Open an assigned applicant review and provide the required audit reason for passport evidence.",
-        "Open the passport preview.",
-        "Use Open document to follow the authorized HTTPS fallback.",
-        "Inspect the captured viewer; no readable document content was obtained."
-      ],
-      "evidence": [
-        {
-          "url": "assets/targeted-20260914/KYCR-F005-fallback-unreadable.png",
-          "label": "Fallback viewer capture; readability remains unverified"
-        },
-        {
-          "url": "assets/targeted-20260914/KYCR-F005-fallback-settled.png",
-          "label": "Legacy fallback remained unreadable after settling"
-        }
-      ],
-      "responsive": [
-        {
-          "size": "360×800",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "390×844",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "768×1024",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1024×768",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1280×800",
-          "status": "NOT RUN",
-          "evidence": []
-        },
-        {
-          "size": "1440×900",
-          "status": "NOT RUN",
-          "evidence": []
-        }
-      ],
-      "limitations": "Visual verification/tooling blocker. No claim that the underlying document is defective; authorized document URLs and private identifiers are not published."
-    },
     {
       "id": "KYCR-F003",
       "title": "Unique exact queue search returns the same applicant three times",
@@ -267,6 +211,63 @@
         }
       ],
       "limitations": "One functional portal-transition journey verified. The authentication journey was not repeated independently at six sizes."
+    },
+    {
+      "id": "KYCR-F005",
+      "title": "Required applicant documents remain unreadable",
+      "status": "PARTIAL",
+      "summary": "Fresh authorized synthetic passport PDF rendered inline at desktop; the original all-black observation did not recur there. At 360, 390 and 768 the viewer showed a thumbnail-dominant pane with document body clipped to the right. Full readable evidence across six sizes was not proven.",
+      "steps": [
+        "Signed in normally as Reviewer in separate Chrome profile.",
+        "Opened owned synthetic pending individual record and selected Preview Passport.",
+        "Used audited Compare submitted evidence reason.",
+        "Inspected actual inline PDF screenshots at all six calibrated sizes.",
+        "Tried visible thumbnail collapse once without visible change.",
+        "Followed Open document fallback; installed Adobe extension viewer was blocked by browser tool URL safety policy. No bypass attempted."
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
+        }
+      ],
+      "evidence": [],
+      "evidencePublication": "WITHHELD_PRIVACY_REVIEW",
+      "limitations": "Fallback readability blocked by browser policy for installed PDF extension. Cannot classify extension/native-viewer state as a confirmed product failure. No KYC decision changed. Evidence withheld pending explicit public-asset review. Private document captures, signed links and local paths are never copied automatically.",
+      "sourceRun": "2026-09-14-retest45",
+      "resultSource": "kyc-results.json"
     }
   ],
   "startedAt": "2026-09-14T04:05:58Z",

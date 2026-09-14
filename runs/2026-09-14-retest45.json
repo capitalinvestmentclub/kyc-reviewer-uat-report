@@ -1,0 +1,88 @@
+{
+  "runId": "2026-09-14-retest45",
+  "state": "RETEST PARTIAL — all 45 dispositioned; incomplete workflows explicitly blocked or partial",
+  "updatedAt": "2026-09-14T07:08:29.535Z",
+  "scope": "Chrome-only targeted retest of the 45 originally unclosed critical/high defects. Dispositioned does not mean fully executed: blocked, partial and unexecuted viewport checks remain explicit. Historical campaign findings remain unchanged. Targeted PASS does not assert broader unexecuted lifecycle coverage.",
+  "frontend": "https://planar-truck-361704.uc.r.appspot.com",
+  "api": "https://cicdevapi.uc.r.appspot.com",
+  "browser": "Google Chrome",
+  "deployments": {
+    "webapp": {
+      "commit": "5061ed8dcb1b62fcba7e8bd411681426b2a52fb9",
+      "version": "auth-34793703967-1"
+    },
+    "webapi": {
+      "commit": "42dd14b8d7bb897b69759d974e0bc23023013057",
+      "version": "policy-34792703930-1"
+    },
+    "notificationservice": {
+      "commit": "515196429af878b68d3d0e2f483f25776a2b073f",
+      "version": "20260914t002754"
+    }
+  },
+  "findings": [
+    {
+      "id": "KYCR-F005",
+      "title": "Required applicant documents remain unreadable",
+      "status": "PARTIAL",
+      "summary": "Fresh authorized synthetic passport PDF rendered inline at desktop; the original all-black observation did not recur there. At 360, 390 and 768 the viewer showed a thumbnail-dominant pane with document body clipped to the right. Full readable evidence across six sizes was not proven.",
+      "steps": [
+        "Signed in normally as Reviewer in separate Chrome profile.",
+        "Opened owned synthetic pending individual record and selected Preview Passport.",
+        "Used audited Compare submitted evidence reason.",
+        "Inspected actual inline PDF screenshots at all six calibrated sizes.",
+        "Tried visible thumbnail collapse once without visible change.",
+        "Followed Open document fallback; installed Adobe extension viewer was blocked by browser tool URL safety policy. No bypass attempted."
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "PARTIAL",
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
+        }
+      ],
+      "evidence": [],
+      "evidencePublication": "WITHHELD_PRIVACY_REVIEW",
+      "limitations": "Fallback readability blocked by browser policy for installed PDF extension. Cannot classify extension/native-viewer state as a confirmed product failure. No KYC decision changed. Evidence withheld pending explicit public-asset review. Private document captures, signed links and local paths are never copied automatically.",
+      "sourceRun": "2026-09-14-retest45",
+      "resultSource": "kyc-results.json"
+    }
+  ],
+  "startedAt": "2026-09-14T04:05:58Z",
+  "timeboxMinutes": 90,
+  "coverageContract": "Targeted risk-based defect retest: one functional journey per affected behavior, reused real records for responsive control/display checks. Not six independent complete journey executions; historical campaign scores unchanged.",
+  "completedAt": "2026-09-14T04:54:48Z",
+  "testingEndedAt": "2026-09-14T04:54:00Z",
+  "publicationNote": "Completed refers to this user-approved targeted run, not closure of every defect or the historical full campaign. Unfinished acceptance remains explicitly PARTIAL, BLOCKED or NOT RUN."
+}
