@@ -1,0 +1,16 @@
+{
+  "state": "PENDING",
+  "browser": "Google Chrome",
+  "sizes": [[360,800],[390,844],[768,1024],[1024,768],[1280,800],[1440,900]],
+  "frontend": "https://planar-truck-361704.uc.r.appspot.com",
+  "api": "https://cicdevapi.uc.r.appspot.com",
+  "deployment": null,
+  "rules": ["No mocked story-critical requests", "UI action and rendered screenshot at every size", "Persisted state survives reload", "Inspect screenshots before Fixed", "Reuse one reviewer session for independent read-only checks; isolate stale-member authentication"],
+  "role": "KYC Reviewer",
+  "scenarios": [
+    {"finding":"KYCR-F001","source":"KYCR-001","setup":"Create a real member session, then visit /kyc-login in the same context.","steps":["Navigate once to /kyc-login","Authenticate as documented reviewer","Confirm reviewer dashboard, not member portal","Reload and confirm reviewer session"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCR-F002","source":"KYCR-001 / KYCR-002","setup":"Reviewer with an assigned queue record.","steps":["Open queue","Verify first-column Review action is in viewport without horizontal scrolling","Activate Review through visible UI","Confirm matching applicant detail","Capture queue and detail"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCR-F003","source":"KYCR-002","setup":"Known exact applicant value previously duplicated; record canonical applicant identity privately.","steps":["Search unique exact value in reviewer queue","Confirm exactly one canonical applicant row","Open record and confirm identity","Reload and repeat exact search"],"status":"PENDING","evidence":[]},
+    {"finding":"KYCR-F005","source":"KYCR-004 / KYCR-006 / KYCR-009","setup":"Assigned synthetic applicant with authorized passport PDF and photograph.","steps":["Open assigned individual review","Preview passport and photograph","Inspect rendered evidence is legible, not black or blank","Use Open document authorized fallback","Confirm HTTPS document loads and preserve real request status","Capture sanitized preview and fallback"],"status":"PENDING","evidence":[]}
+  ]
+}

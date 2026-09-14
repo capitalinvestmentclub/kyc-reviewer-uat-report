@@ -1,0 +1,278 @@
+{
+  "runId": "2026-09-14-targeted-chrome",
+  "state": "COMPLETED — targeted partial-scope retest; original campaign not closed",
+  "updatedAt": "2026-09-14T04:54:48Z",
+  "scope": "User-approved 90-minute risk-based retest of affected critical/high findings. Functional journey execution is separate from responsive inspection.",
+  "frontend": "https://planar-truck-361704.uc.r.appspot.com",
+  "api": "https://cicdevapi.uc.r.appspot.com",
+  "browser": "Google Chrome",
+  "deployments": {
+    "webapp": {
+      "commit": "5061ed8dcb1b62fcba7e8bd411681426b2a52fb9",
+      "version": "auth-34793703967-1"
+    },
+    "webapi": {
+      "commit": "42dd14b8d7bb897b69759d974e0bc23023013057",
+      "version": "policy-34792703930-1"
+    },
+    "notificationservice": {
+      "commit": "515196429af878b68d3d0e2f483f25776a2b073f",
+      "version": "20260914t002754"
+    }
+  },
+  "findings": [
+    {
+      "id": "KYCR-F005",
+      "title": "Required applicant documents remain unreadable",
+      "scenario": "KYCR-004 / KYCR-006 / KYCR-009",
+      "status": "BLOCKED",
+      "summary": "The audited passport preview and HTTPS Open document fallback were exercised, but both viewers appeared black in screenshot capture. Readability could not be verified; a product failure has not been established. The legacy fallback remained black after a ten-minute settling period; a different controlled private fixture rendered legibly in the approval role, indicating fixture-specific coverage remains unresolved.",
+      "steps": [
+        "Open an assigned applicant review and provide the required audit reason for passport evidence.",
+        "Open the passport preview.",
+        "Use Open document to follow the authorized HTTPS fallback.",
+        "Inspect the captured viewer; no readable document content was obtained."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCR-F005-fallback-unreadable.png",
+          "label": "Fallback viewer capture; readability remains unverified"
+        },
+        {
+          "url": "assets/targeted-20260914/KYCR-F005-fallback-settled.png",
+          "label": "Legacy fallback remained unreadable after settling"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "NOT RUN",
+          "evidence": []
+        }
+      ],
+      "limitations": "Visual verification/tooling blocker. No claim that the underlying document is defective; authorized document URLs and private identifiers are not published."
+    },
+    {
+      "id": "KYCR-F003",
+      "title": "Unique exact queue search returns the same applicant three times",
+      "scenario": "KYCR-002",
+      "status": "PASS",
+      "summary": "The current Pending queue contains 22 rows with 22 unique KYC records and 22 unique canonical applicants. Two same-name search results belong to different applicants, not duplicate queue records.",
+      "steps": [
+        "Load all five Pending queue pages through the browser UI: 5 + 5 + 5 + 5 + 2 rows.",
+        "Correlate the UI-triggered queue GET responses read-only and verify 22 unique KYC record identities and 22 unique canonical applicant identities.",
+        "Compare the two same-name search results and confirm their canonical applicants differ."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCR-F003-observation.md",
+          "label": "Sanitized current Pending queue canonical reconciliation"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "NOT RUN",
+          "evidence": []
+        }
+      ],
+      "limitations": "Current Pending queue only. New duplicate creation, resubmission and all other statuses were not tested. Raw queue responses and applicant identifiers are not published. Queue-action responsive evidence is separate under F002, not six-size duplicate-proof coverage."
+    },
+    {
+      "id": "KYCR-F002",
+      "title": "Mobile queue actions are off-screen",
+      "scenario": "KYCR-001 / KYCR-002",
+      "status": "PASS",
+      "summary": "The primary Review action stayed within the viewport at all six exact Chrome sizes and opened the matching applicant record.",
+      "steps": [
+        "Open the reviewer queue.",
+        "At each exact CSS viewport, focus the primary Review action and inspect its position after vertical scrolling.",
+        "Verify the action is within the viewport without horizontal scrolling.",
+        "Activate the first Review action and confirm matching applicant detail."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCR-queue-visible-1440x900.png",
+          "label": "Visible Review action and matching queue context"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-360x800.png",
+              "label": "360×800 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        },
+        {
+          "size": "390×844",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-390x844.png",
+              "label": "390×844 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        },
+        {
+          "size": "768×1024",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-768x1024.png",
+              "label": "768×1024 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        },
+        {
+          "size": "1024×768",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-1024x768.png",
+              "label": "1024×768 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        },
+        {
+          "size": "1280×800",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-1280x800.png",
+              "label": "1280×800 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        },
+        {
+          "size": "1440×900",
+          "status": "PASS",
+          "evidence": [
+            {
+              "url": "assets/targeted-20260914/KYCR-queue-visible-1440x900.png",
+              "label": "1440×900 calibrated Chrome queue"
+            }
+          ],
+          "summary": "Primary Review action within viewport; no horizontal scrolling required. Visually inspected."
+        }
+      ],
+      "limitations": "Responsive reachability verified at all six sizes; record-opening functional journey executed once. Initial captures taken before exact viewport calibration are excluded."
+    },
+    {
+      "id": "KYCR-F001",
+      "title": "Stale member state redirects reviewer login to the wrong portal",
+      "scenario": "KYCR-001",
+      "status": "PASS",
+      "summary": "An authenticated member session navigated directly to reviewer sign-in, then reviewer login opened the correct dashboard and survived reload.",
+      "steps": [
+        "Sign in as the controlled Pitcher member and open its dashboard.",
+        "In the same Chrome context, navigate directly to /kyc-login.",
+        "Sign in as reviewer; verify the reviewer dashboard opens.",
+        "Reload and verify the reviewer dashboard persists."
+      ],
+      "evidence": [
+        {
+          "url": "assets/targeted-20260914/KYCR-queue-visible-1440x900.png",
+          "label": "Reviewer queue after successful portal transition and reload"
+        }
+      ],
+      "responsive": [
+        {
+          "size": "360×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "390×844",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "768×1024",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1024×768",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1280×800",
+          "status": "NOT RUN",
+          "evidence": []
+        },
+        {
+          "size": "1440×900",
+          "status": "NOT RUN",
+          "evidence": []
+        }
+      ],
+      "limitations": "One functional portal-transition journey verified. The authentication journey was not repeated independently at six sizes."
+    }
+  ],
+  "startedAt": "2026-09-14T04:05:58Z",
+  "timeboxMinutes": 90,
+  "coverageContract": "Targeted risk-based defect retest: one functional journey per affected behavior, reused real records for responsive control/display checks. Not six independent complete journey executions; historical campaign scores unchanged.",
+  "completedAt": "2026-09-14T04:54:48Z",
+  "testingEndedAt": "2026-09-14T04:54:00Z",
+  "publicationNote": "Completed refers to this user-approved targeted run, not closure of every defect or the historical full campaign. Unfinished acceptance remains explicitly PARTIAL, BLOCKED or NOT RUN."
+}
