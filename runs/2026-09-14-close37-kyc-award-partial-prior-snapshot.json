@@ -79,10 +79,10 @@
     },
     "cloudRetestSummary": "GRT020-BAL-001 PASS: original terminated grant shows its existing USD -1 refund, USD +1 contribution and zero available/current balance after reload. Six exact measured Chrome CSS viewports passed. No fresh financial transaction was executed; other cloud retests are pending."
   },
-  "runId": "2026-09-14-close37-kyc-award-partial",
-  "state": "RETEST PARTIAL — completed targeted batch published; remaining findings retain their latest recorded outcomes",
-  "updatedAt": "2026-09-15T02:04:35.489Z",
-  "scope": "Chrome-only targeted defect acceptance on the recorded deployed versions. New results are limited to explicitly supplied findings and six measured CSS sizes. Historical scenarios and unexecuted lifecycle branches are not promoted to PASS.",
+  "runId": "2026-09-14-retest45",
+  "state": "RETEST PARTIAL — all 45 dispositioned; incomplete workflows explicitly blocked or partial",
+  "updatedAt": "2026-09-14T07:08:29.535Z",
+  "scope": "Chrome-only targeted retest of the 45 originally unclosed critical/high defects. Dispositioned does not mean fully executed: blocked, partial and unexecuted viewport checks remain explicit. Historical campaign findings remain unchanged. Targeted PASS does not assert broader unexecuted lifecycle coverage.",
   "frontend": "https://planar-truck-361704.uc.r.appspot.com",
   "api": "https://cicdevapi.uc.r.appspot.com",
   "browser": "Google Chrome",
@@ -296,176 +296,58 @@
       "id": "KYCR-F005",
       "title": "Required applicant documents remain unreadable",
       "status": "PARTIAL",
-      "summary": "Original black/blank document symptom not reproduced: inline synthetic PDF and photograph rendered at six source-app CSS sizes; actual Open Document clicked at each, then native fallback separately measured to exact six sizes and whole content read. Ordinary non-KYC role denied dashboard entry after six full reloads. Overall PARTIAL; full inline PDF zoom/scroll remains outstanding.",
+      "summary": "Fresh authorized synthetic passport PDF rendered inline at desktop; the original all-black observation did not recur there. At 360, 390 and 768 the viewer showed a thumbnail-dominant pane with document body clipped to the right. Full readable evidence across six sizes was not proven.",
       "steps": [
-        "Open synthetic document using normal authorized employee preview and audited reason",
-        "Read rendered inline content, use actual Open Document fallback",
-        "Independently measure native fallback viewport and read whole document with scrolling",
-        "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
+        "Signed in normally as Reviewer in separate Chrome profile.",
+        "Opened owned synthetic pending individual record and selected Preview Passport.",
+        "Used audited Compare submitted evidence reason.",
+        "Inspected actual inline PDF screenshots at all six calibrated sizes.",
+        "Tried visible thumbnail collapse once without visible change.",
+        "Followed Open document fallback; installed Adobe extension viewer was blocked by browser tool URL safety policy. No bypass attempted."
       ],
       "responsive": [
         {
           "size": "360×800",
-          "measuredCss": "360x800",
           "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
         },
         {
           "size": "390×844",
-          "measuredCss": "390x844",
           "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
         },
         {
           "size": "768×1024",
-          "measuredCss": "768x1024",
           "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding. Inline photo bottom still outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
         },
         {
           "size": "1024×768",
-          "measuredCss": "1024x768",
           "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "summary": "Document text was not fully readable in the current inline viewer state; clipped content or thumbnail-dominant pane.",
+          "evidence": []
         },
         {
           "size": "1280×800",
-          "measuredCss": "1280x800",
-          "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
         },
         {
           "size": "1440×900",
-          "measuredCss": "1440x900",
-          "status": "PARTIAL",
-          "summary": "Inline rendering and exact native fallback whole-reading subchecks PASS; normal-role dashboard entry denial PASS after fresh reload. Complete inline PDF reading outstanding.",
-          "steps": [
-            "Open synthetic document using normal authorized employee preview and audited reason",
-            "Read rendered inline content, use actual Open Document fallback",
-            "Independently measure native fallback viewport and read whole document with scrolling",
-            "Log out normally, sign in ordinary Pitcher, full reload KYC dashboard and confirm unavailable-role heading with zero Preview Passport controls"
-          ],
-          "evidence": [
-            {
-              "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-              "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-            }
-          ],
-          "inlineRenderingStatus": "PASS",
-          "nativeFallbackReadStatus": "PASS",
-          "entryRoleBoundaryStatus": "PASS",
-          "signedResourceBoundaryStatus": "NOT RUN",
-          "inlineFullPdfReadStatus": "PARTIAL"
+          "status": "PASS",
+          "summary": "Synthetic PDF text visibly rendered inline, not black.",
+          "evidence": []
         }
       ],
-      "evidence": [
-        {
-          "url": "assets/2026-09-14-close37-kyc-award-partial/cloud-kyc-wrong-role-1440.png",
-          "label": "Shared1440 generic role-entry denial only; not document-readability evidence"
-        }
-      ],
-      "evidencePublication": "APPROVED_PUBLIC_EVIDENCE",
-      "limitations": "Private identity captures, document contents, account identifiers and signed URLs excluded. Shared generic1440 image proves entry-gate denial only, not document readability or signed-resource server authorization. Native phone PDF needs horizontal scrolling. Full inline PDF reading incomplete. Reviewer768 inline photograph bottom remains outstanding.",
-      "sourceRun": "2026-09-14-close37-kyc-award-partial",
-      "resultSource": "kyc-results.json",
-      "deployments": {
-        "webapp": {
-          "version": "auth-34913946226-1",
-          "commit": "a2d485d57a0456f9e6f038cdfc73dfb467d9a9dd",
-          "status": "EXECUTION_VERSION"
-        },
-        "webapi": {
-          "version": "policy-34904590658-1",
-          "commit": "de320d4539f95415a84a3928fce77ee16633ca8f",
-          "status": "EXECUTION_VERSION"
-        },
-        "buildId": "GPbRknNf6FXNHRtHOGCPF"
-      }
+      "evidence": [],
+      "evidencePublication": "WITHHELD_PRIVACY_REVIEW",
+      "limitations": "Fallback readability blocked by browser policy for installed PDF extension. Cannot classify extension/native-viewer state as a confirmed product failure. No KYC decision changed. Evidence withheld pending explicit public-asset review. Private document captures, signed links and local paths are never copied automatically.",
+      "sourceRun": "2026-09-14-retest45",
+      "resultSource": "kyc-results.json"
     }
   ],
   "startedAt": "2026-09-14T04:05:58Z",
